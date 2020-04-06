@@ -1,0 +1,11 @@
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\bin\Debug\netcoreapp3.1\PotDrop.exe
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\bin\Debug\netcoreapp3.1\PotDrop.deps.json
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\bin\Debug\netcoreapp3.1\PotDrop.runtimeconfig.json
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\bin\Debug\netcoreapp3.1\PotDrop.runtimeconfig.dev.json
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\bin\Debug\netcoreapp3.1\PotDrop.dll
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\bin\Debug\netcoreapp3.1\PotDrop.pdb
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\obj\Debug\netcoreapp3.1\PotDrop.csprojAssemblyReference.cache
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\obj\Debug\netcoreapp3.1\PotDrop.AssemblyInfoInputs.cache
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\obj\Debug\netcoreapp3.1\PotDrop.AssemblyInfo.cs
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\obj\Debug\netcoreapp3.1\PotDrop.dll
+C:\Users\yjwar\source\repos\PotDrop\PotDrop\obj\Debug\netcoreapp3.1\PotDrop.pdb
