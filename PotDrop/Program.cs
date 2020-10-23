@@ -9,8 +9,10 @@ namespace PotDrop
         //creates pots 
         static double pot = 0;
         static double r = 0;
-        
-        
+
+        static bool BotInPlay;
+
+
         static void Main(string[] args)
         {
             //double[] betActive = { 10, 10, 10, 10, 10, 0.50, 30, 0.00, 200, 60.33};
@@ -28,11 +30,13 @@ namespace PotDrop
             while (input != "*")
             {
                 double[] betActive = bets(id);
-                Shuffle(id, betActive);  
+
+                //this allow the bets in the pot to be shuffled testing this implementation incase cheater manage to find an exploit in knowing thier position in the pot
+                //Shuffle(id, betActive);  
 
 
                 Console.WriteLine("");
-                Console.WriteLine("Results");
+                Console.WriteLine("Ticket Number");
                 r = Result();
                 Console.WriteLine(r);
                 Console.WriteLine("");
@@ -56,13 +60,24 @@ namespace PotDrop
 
         }
          
+
+        public static int botActive(bool bot)
+        {
+            if (BotInPlay == true)
+            {
+                return 1;
+            }
+
+            return 0;
+        }
+
         public static void Shuffle(int[] id, double[] bet)
         {
             Random rand = new Random();
-            //add -1 when bot active
-            for (int i = 0; i < id.Length; i++)
+            //add length-1 when bot active
+            for (int i = 0; i < id.Length-botActive(BotInPlay); i++)
             {
-                int j = rand.Next(i, id.Length);
+                int j = rand.Next(i, id.Length-botActive(BotInPlay));
 
                 
                 int temp = id[i];
@@ -83,28 +98,47 @@ namespace PotDrop
         {
             List<int> id = new List<int>();
             string input = "";
+            
+            string playBot = "";
             int hold = 1;
+
+            Console.WriteLine("Welcome to PotDrop 2.8 Bata");
+            Console.WriteLine(" ");
+
+            //need to work on this
+            while (playBot != "*")
+            {
+                Console.WriteLine("Do you want to play with a bot(Adds 10% )? for yes press * or just press enter to continue");
+                playBot = Console.ReadLine();
+                if (playBot == "*")
+                {
+                    BotInPlay = true;
+                }
+                if(playBot != "*")
+                {
+                    BotInPlay = false;
+                    playBot = "*";
+                }
+            }
 
 
             while (input != "*")
             {
 
-                Console.WriteLine("Please sign in:");
-                Console.WriteLine(" ");
-                Console.WriteLine("UserName:");
+                
+                Console.WriteLine("Please enter a UserName:");
                 string userName = Console.ReadLine();
                 Console.WriteLine(" ");
-                Console.WriteLine("Password:");
-                string password = Console.ReadLine();
+                
 
 
 
                 
-                if (userName != null && password != null)
+                if (userName != null)
                 {
                     
                     id.Add(hold);
-                    Console.WriteLine("Your Id is {0}", hold);
+                    Console.WriteLine("{0}, your Id is {1}", userName, hold);
                     hold += 1;
                     
                 }
@@ -115,7 +149,11 @@ namespace PotDrop
                 
             }
 
-            //id.Add(RobotId(id.ToArray()));
+            //add this in comments if you want bot off.
+            if (BotInPlay == true)
+            {
+                id.Add(RobotId(id.ToArray()));
+            }
             return id.ToArray();
 
             
@@ -124,8 +162,8 @@ namespace PotDrop
         public static double[] bets(int[] id)
         {
             List<double> bet = new List<double>();
-            //add -1 when bot active
-            for (int i = 0; i < id.Length; i++)
+            //add length-1 when bot active
+            for (int i = 0; i < id.Length-botActive(BotInPlay); i++)
             {
                 Console.WriteLine("");
                 Console.WriteLine("user Id {0} can you please type in your bet amount below:",id[i]);
@@ -142,7 +180,11 @@ namespace PotDrop
                 bet.Add(num);
             }
 
-            //bet.Add(RobotBet(bet.ToArray()));
+            //add this in comments if you want bot off.
+            if (BotInPlay == true)
+            {
+                bet.Add(RobotBet(bet.ToArray()));
+            }
             return bet.ToArray();
         }
     
@@ -177,7 +219,8 @@ namespace PotDrop
 
             }
 
-            return p * 0.06;
+            //10%
+            return p * 0.1;
 
         }
 
